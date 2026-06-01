@@ -9,6 +9,14 @@ class Asmond < Formula
   depends_on :macos
   depends_on "python@3.14"
 
+  def install
+    bin.install "asmond.py" => "asmond"
+  end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/asmond --version")
+  end
+
   def caveats
     <<~EOS
       Asmond stores user settings at:
@@ -17,13 +25,5 @@ class Asmond < Formula
       Homebrew does not remove per-user settings automatically.
       Run `asmond --remove-settings` before uninstalling if you want to remove them.
     EOS
-  end
-
-  def install
-    bin.install "asmond.py" => "asmond"
-  end
-
-  test do
-    assert_match version.to_s, shell_output("#{bin}/asmond --version")
   end
 end
