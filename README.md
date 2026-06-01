@@ -10,7 +10,7 @@ brew install asmond
 Run:
 
 ```bash
-sudo asmond
+asmond
 ```
 
 Asmond currently supports macOS on Apple Silicon.
