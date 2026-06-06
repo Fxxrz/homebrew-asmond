@@ -1,8 +1,8 @@
 class Asmond < Formula
   desc "macOS power, thermal and activity monitor for Apple Silicon"
   homepage "https://github.com/Fxxrz/asmond"
-  url "https://github.com/Fxxrz/asmond/archive/refs/tags/v0.2.2.tar.gz"
-  sha256 "a10964e8b698be681eec9409422df3c58cfe7cf951b29954c44927066633029b"
+  url "https://github.com/Fxxrz/asmond/archive/refs/tags/v0.3.0.tar.gz"
+  sha256 "2e5ec10c01ccce2e9b034a1c9cde944b222cbb4650a86899ab7a35699cd80636"
   license "MIT"
 
   depends_on arch: :arm64
@@ -11,6 +11,7 @@ class Asmond < Formula
 
   def install
     bin.install "asmond.py" => "asmond"
+    man1.install "man/asmond.1"
   end
 
   def caveats
