@@ -1,8 +1,8 @@
 class Asmond < Formula
   desc "macOS power, thermal and activity monitor for Apple Silicon"
   homepage "https://github.com/Fxxrz/asmond"
-  url "https://github.com/Fxxrz/asmond/archive/refs/tags/v0.4.0.tar.gz"
-  sha256 "cb66d39311467bbccd9547263e3c29b6fea774491eb242e980d740c850f07c3a"
+  url "https://github.com/Fxxrz/asmond/archive/refs/tags/v0.4.1.tar.gz"
+  sha256 "62628e821b20741b45fbef77b44922de9773e162ba21b724f394f02fafbbb7ea"
   license "MIT"
 
   depends_on arch: :arm64
@@ -10,7 +10,13 @@ class Asmond < Formula
   depends_on "python@3.14"
 
   def install
-    bin.install "asmond.py" => "asmond"
+    libexec.install "asmond.py"
+    libexec.install Dir["asmond_*.py"]
+    (bin/"asmond").write <<~EOS
+      #!/bin/sh
+      exec "#{libexec}/asmond.py" "$@"
+    EOS
+    chmod 0755, bin/"asmond"
     man1.install "man/asmond.1"
   end
 
@@ -26,5 +32,6 @@ class Asmond < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/asmond --version")
+    assert_match "\"app\": \"Asmond\"", shell_output("#{bin}/asmond report --mock --json")
   end
 end
