@@ -13,4 +13,4 @@ Run:
 asmond
 ```
 
-Asmond currently supports macOS on Apple Silicon.
+Asmond is Apple-Silicon-first. Intel Mac support is experimental and limited to counters macOS exposes on that hardware.
