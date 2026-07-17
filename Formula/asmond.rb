@@ -1,19 +1,20 @@
 class Asmond < Formula
   desc "macOS terminal power, thermal and activity monitor"
   homepage "https://github.com/Fxxrz/asmond"
-  url "https://github.com/Fxxrz/asmond/archive/refs/tags/v0.5.1.tar.gz"
-  sha256 "3c92b830d2fe6842524cf703a58b798a37c0d6697f7145e8a9ca2791ded64950"
+  url "https://github.com/Fxxrz/asmond/archive/refs/tags/v0.5.2.tar.gz"
+  sha256 "161a789716a962d85e87a13119301ccd09671b0ddc240518ae3e4db930349ac9"
   license "MIT"
 
   depends_on :macos
   depends_on "python@3.14"
 
   def install
+    python = formula_opt_bin("python@3.14")/"python3.14"
     libexec.install "asmond.py"
     libexec.install Dir["asmond_*.py"]
     (bin/"asmond").write <<~EOS
       #!/bin/sh
-      exec "#{libexec}/asmond.py" "$@"
+      exec "#{python}" "#{libexec}/asmond.py" "$@"
     EOS
     chmod 0755, bin/"asmond"
     man1.install "man/asmond.1"
