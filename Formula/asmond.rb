@@ -1,8 +1,8 @@
 class Asmond < Formula
   desc "macOS terminal power, thermal and activity monitor"
   homepage "https://github.com/Fxxrz/asmond"
-  url "https://github.com/Fxxrz/asmond/archive/refs/tags/v0.5.2.tar.gz"
-  sha256 "161a789716a962d85e87a13119301ccd09671b0ddc240518ae3e4db930349ac9"
+  url "https://github.com/Fxxrz/asmond/archive/refs/tags/v0.5.3.tar.gz"
+  sha256 "bfdd7bca09f614110ef9410552b4b84355ffb93c10b69ca044c140121dd035cc"
   license "MIT"
 
   depends_on :macos
@@ -31,7 +31,7 @@ class Asmond < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/asmond --version")
+    assert_equal "Asmond #{version}\n", shell_output("#{bin}/asmond --version")
     assert_match "\"app\": \"Asmond\"", shell_output("#{bin}/asmond report --mock --json")
   end
 end
