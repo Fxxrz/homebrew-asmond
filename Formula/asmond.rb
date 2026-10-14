@@ -1,8 +1,8 @@
 class Asmond < Formula
   desc "macOS terminal power, thermal and activity monitor"
   homepage "https://github.com/Fxxrz/asmond"
-  url "https://github.com/Fxxrz/asmond/archive/refs/tags/v0.6.0.tar.gz"
-  sha256 "5ddbc5404debf01cf5cda6f118c164e175d7f635a21a3594b633a17af7416f14"
+  url "https://github.com/Fxxrz/asmond/archive/refs/tags/v0.6.1.tar.gz"
+  sha256 "c4c990650de6ddfd234e71068948647464871fe1bbdfb0e5f708e7464a5bd3fb"
   license "MIT"
 
   depends_on :macos
